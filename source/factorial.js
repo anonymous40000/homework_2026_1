@@ -14,14 +14,8 @@
  * factorial(3); // 6
  */
 const factorial = (n) => {
-    if (typeof n !== 'number') {
-        throw new Error('Аргумент должен быть числом');
-    }
-    if (!Number.isFinite(n)) {
-        throw new Error('Аргумент должен быть конечным числом');
-    }
     if (!Number.isInteger(n)) {
-        throw new Error('Факториал определен только для целых чисел');
+        throw new Error('Факториал определен только для целых чисел и бесконечности');
     }
     if (n < 0) {
         throw new Error('Факториал не определен для отрицательных чисел');
