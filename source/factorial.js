@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Вычисляет факториал числа n (n!)
  * 
@@ -12,17 +14,19 @@
  * factorial(3); // 6
  */
 const factorial = (n) => {
-    if (n < 0) {
-        throw new Error('Факториал не определен для отрицательных чисел');
+    if (typeof n !== 'number') {
+        throw new Error('Аргумент должен быть числом');
+    }
+    if (!Number.isFinite(n)) {
+        throw new Error('Аргумент должен быть конечным числом');
     }
     if (!Number.isInteger(n)) {
         throw new Error('Факториал определен только для целых чисел');
     }
-    if (n === 0 || n === 1) return 1;
-    let result = 1;
-    for (let i = 2; i <= n; ++i) {
-        result *= i;
+    if (n < 0) {
+        throw new Error('Факториал не определен для отрицательных чисел');
     }
-    return result;
+    
+    return Array.from({ length: n }, (_, i) => i + 1)
+        .reduce((acc, val) => acc * val, 1);
 };
-

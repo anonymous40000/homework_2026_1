@@ -30,4 +30,16 @@ QUnit.module('Тестируем функцию factorial', () => {
             factorial(2.5);
         }, /Факториал определен только для целых чисел/, 'Ошибка выбрасывается для 2.5');
     });
+    QUnit.test('Факториал для нечисловых типов должен выбрасывать ошибку', (assert) => {
+        assert.throws(() => factorial('5'), /Аргумент должен быть числом/, 'Ошибка для строки');
+        assert.throws(() => factorial(null), /Аргумент должен быть числом/, 'Ошибка для null');
+        assert.throws(() => factorial(undefined), /Аргумент должен быть числом/, 'Ошибка для undefined');
+        assert.throws(() => factorial({}), /Аргумент должен быть числом/, 'Ошибка для объекта');
+    });
+
+    QUnit.test('Факториал для Infinity и NaN должен выбрасывать ошибку', (assert) => {
+        assert.throws(() => factorial(Infinity), /Аргумент должен быть конечным числом/, 'Ошибка для Infinity');
+        assert.throws(() => factorial(-Infinity), /Аргумент должен быть конечным числом/, 'Ошибка для -Infinity');
+        assert.throws(() => factorial(NaN), /Аргумент должен быть конечным числом/, 'Ошибка для NaN');
+    });
 });
