@@ -15,10 +15,10 @@
  */
 const factorial = (n) => {
     if (!Number.isInteger(n)) {
-        throw new Error('Факториал определен только для целых чисел и бесконечности');
+        throw new TypeError('Факториал определен только для целых чисел и бесконечности');
     }
     if (n < 0) {
-        throw new Error('Факториал не определен для отрицательных чисел');
+        throw new RangeError('Факториал не определен для отрицательных чисел');
     }
     
     return Array.from({ length: n }, (_, i) => i + 1)
